@@ -53,7 +53,7 @@ if not exist config.bat (
    echo   [2]Frp操作中心[Under Development]
    echo   [9]配置文件相关[Under Development]
    echo   [0]退出
-   choice /C:0129 /N
+   choice /C:0129A /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto bye
    if %_erl%==2 goto Server_Action_Center
@@ -75,19 +75,23 @@ if not exist config.bat (
       echo.
       goto Main_Action_Center
    )
-
-:Admin
-echo User: Admin
-echo Please enter you login password...
-set "_.Admin.login.password=" /p
-if %_.Admin.login.password%==%_version% (
-   echo Login successful!
-   goto Admin_Action_Center
-) else (
-   echo WRONG PASSWORD!
-   pause >nul
-   exit /b
-)
+   if %_erl%==4 (
+      set /p "_login.confirm="
+      if %_login.confirm%=login (
+         echo User: Admin
+         echo Please enter you login password...
+         set "_login.admin.password=" /p
+         if %_login.admin.password%==%_version% (
+            echo Login Successful!
+            goto Admin_Action_Center
+         ) else (
+            echo WRONG PASSWORD!
+            pause >nul
+            exit /b
+         )
+      )
+      goto Main_Action_Center
+   )
 
 :Frp_Action_Center
    cls
