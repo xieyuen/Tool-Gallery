@@ -7,6 +7,7 @@
 @rem 3.将参数保存至Config文件
 ::===========================================================================================================================
 :: 调试
+set _version=2.0.0
 if not exist config.bat (
    set "_ACS=AutoCheckingServer"
    :Initialize
@@ -35,7 +36,7 @@ if not exist config.bat (
    title Hello! %username%, 欢迎使用此脚本
    echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
    echo 欢迎%username%使用此脚本!
-   echo 脚本版本: 2.0.0 snapshot GBK
+   echo 脚本版本: %_version% snapshot GBK
    echo 此脚本为快照版, 有BUG请邮箱 xieyuen163@163.com
    echo.
    echo 这版本如果不出什么BUG那就升级成正式版把
@@ -48,8 +49,8 @@ if not exist config.bat (
 
 :Main_Action_Center & :: 操作中心界面
    echo 请选择项目:
-   echo   [1]服务器控制中心
-   echo   [2]Frp控制中心[Under Development]
+   echo   [1]服务器操作中心
+   echo   [2]Frp操作中心[Under Development]
    echo   [9]配置文件相关[Under Development]
    echo   [0]退出
    choice /C:0129 /N
@@ -58,14 +59,35 @@ if not exist config.bat (
    if %_erl%==2 goto Server_Action_Center
    if %_erl%==3 (
       cls 
+      echo.
+      echo This feature is under development!
       echo This feature is under development! 
+      echo This feature is under development! 
+      echo. 
       goto Main_Action_Center
    )
    if %_erl%==4 (
       cls 
+      echo.
       echo This feature is under development! 
+      echo This feature is under development! 
+      echo This feature is under development! 
+      echo.
       goto Main_Action_Center
    )
+
+:Admin
+echo User: Admin
+echo Please enter you login password...
+set "_.Admin.login.password=" /p
+if %_.Admin.login.password%==%_version% (
+   echo Login successful!
+   goto Admin_Action_Center
+) else (
+   echo WRONG PASSWORD!
+   pause >nul
+   exit /b
+)
 
 :Frp_Action_Center
    cls
@@ -181,7 +203,7 @@ if not exist config.bat (
    echo   [I]无限自动重启
    echo   [3]测试服务器(重启1次)
    echo   [4]测试服务器(不重启)
-   echo   [0]返回服务器控制中心
+   echo   [0]返回服务器操作中心
    echo 输入选择的菜单项:
    choice /C:12I034 /N
    set _erl=%errorlevel%
@@ -228,7 +250,7 @@ if not exist config.bat (
    echo 请选择项目:
    echo   [1]MOD
    echo   [2]PLUGIN
-   echo   [3]返回服务器控制中心
+   echo   [3]返回服务器操作中心
    echo 输入选择的菜单项:
    choice /C:120 /N
    set _erl=%errorlevel%
@@ -470,10 +492,12 @@ if not exist config.bat (
    echo 请选择操作:
    echo [1]保存配置
    echo [2]读取配置
-   choice /C:12 /N
+   echo [0]返回主操作中心
+   choice /C:120 /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto Save_Config
    if %_erl%==2 goto Read_Config
+   if %_erl%==3 goto Main_Action_Center
    
    :Save_Config
       echo @rem 这是开服脚本的配置文件 > config.bat
@@ -489,6 +513,15 @@ if not exist config.bat (
       echo set _Frpc=%_Frpc% >> config.bat
       echo set _Frpc_Config=%_Frpc_Config% >> config.bat
       echo. >>config.bat
+   
+   :Read_Config
+      if not exist config.bat (
+         echo 无法识别到配置文件，
+         echo 请按任意键返回...
+         pause >nul
+         goto Config
+      )
+      call config.bat
 
 ::============================================================================================================================
 
