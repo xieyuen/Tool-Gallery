@@ -7,6 +7,7 @@
 @rem 3.将参数保存至Config文件
 ::===========================================================================================================================
 :: 调试
+if not exist config.bat (
    set "_ACS=AutoCheckingServer"
    :Initialize
       chcp 936 & :: 设置代码页 GBK
@@ -24,6 +25,9 @@
          set _eula=false 
       )
    cls
+) else (
+   call config.bat
+)
 
 ::============================================================================================================================
 
@@ -48,11 +52,20 @@
    echo   [2]Frp控制中心[Under Development]
    echo   [9]配置文件相关[Under Development]
    echo   [0]退出
-   choice /C:012 /N
+   choice /C:0129 /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto bye
    if %_erl%==2 goto Server_Action_Center
-   if %_erl%==3 echo This feature is under development! & goto Frp_Action_Center
+   if %_erl%==3 (
+      cls 
+      echo This feature is under development! 
+      goto Main_Action_Center
+   )
+   if %_erl%==4 (
+      cls 
+      echo This feature is under development! 
+      goto Main_Action_Center
+   )
 
 :Frp_Action_Center
    cls
@@ -452,20 +465,30 @@
 
 ::============================================================================================================================
 
-:SaveConfig
-   echo @rem 这是开服脚本的配置文件 > config.bat
-   echo @rem 每次保存都会覆盖掉你多余的字符 >> config.bat
-   echo @rem 不要乱改哦（特别是 “ = ” 前面的） >>config.bat
-   echo @rem 要改也只能改每行 “=” 后面的 >>config.bat
-   echo. >>config.bat
-   echo set _Server=%_Server% >> config.bat
-   echo set _RAMmax=%_RAMmax% >> config.bat
-   echo set _RAMmin=%_RAMmin% >> config.bat
-   echo set _Java=%_Java% >> config.bat
-   echo set _EULA=%_eula% >> config.bat
-   echo set _Frpc=%_Frpc% >> config.bat
-   echo set _Frpc_Config=%_Frpc_Config% >> config.bat
-   echo. >>config.bat
+:Config
+
+   echo 请选择操作:
+   echo [1]保存配置
+   echo [2]读取配置
+   choice /C:12 /N
+   set _erl=%ERRORLEVEL%
+   if %_erl%==1 goto Save_Config
+   if %_erl%==2 goto Read_Config
+   
+   :Save_Config
+      echo @rem 这是开服脚本的配置文件 > config.bat
+      echo @rem 每次保存都会覆盖掉你多余的字符 >> config.bat
+      echo @rem 不要乱改哦（特别是 “ = ” 前面的） >>config.bat
+      echo @rem 要改也只能改每行 “=” 后面的 >>config.bat
+      echo. >>config.bat
+      echo set _Server=%_Server% >> config.bat
+      echo set _RAMmax=%_RAMmax% >> config.bat
+      echo set _RAMmin=%_RAMmin% >> config.bat
+      echo set _Java=%_Java% >> config.bat
+      echo set _EULA=%_eula% >> config.bat
+      echo set _Frpc=%_Frpc% >> config.bat
+      echo set _Frpc_Config=%_Frpc_Config% >> config.bat
+      echo. >>config.bat
 
 ::============================================================================================================================
 
