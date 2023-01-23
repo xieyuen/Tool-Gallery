@@ -13,7 +13,7 @@
 ---
 
 - 有BUG来找我<br>
-    - **[Email](<xieyuen163@163.com> "点我发邮件")**: <xieyuen163@163.com>
+    - **Email**: <xieyuen163@163.com>
 
 最新版本: [***1.3.7***](<start-1.3.7-snapshot%20GBK.bat> "其实有 2.0.0 (")
 
