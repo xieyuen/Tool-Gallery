@@ -68,7 +68,7 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 ---
 
 >### 版本 [*1.3.5*](start-1.3.5-snapshot%20GBK.bat)<br>
->1. [添加对.disabled禁用方式读取支持](<> "但是脚本内禁用的方式还是.ban")
+>1. [添加对.disabled禁用方式读取支持](但是脚本内禁用的方式还是.ban ".disabled or .ban?")
 >2. 添加自定义Java路径支持
 >3. 完善vanilla核心检测
 >4. 对崩溃界面作了小调整
