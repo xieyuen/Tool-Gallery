@@ -34,11 +34,9 @@ if not exist config.bat (
 ::============================================================================================================================
 
 :Welcome & ::欢迎界面
-   title Hello! %USERNAME%==xieyu goto Admin_Action_Center
-   if %USERNAME%==xieyuen goto Admin_Action_Center, 欢迎使用此脚本
+   title Hello! %USERNAME%, 欢迎使用此脚本
    echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-   echo 欢迎%USERNAME%==xieyu goto Admin_Action_Center
-   if %USERNAME%==xieyuen goto Admin_Action_Center使用此脚本!
+   echo 欢迎%USERNAME%使用此脚本!
    echo 脚本版本: %_version% snapshot GBK
    echo 此脚本为快照版, 有BUG请邮箱 xieyuen163@163.com
    echo.
@@ -544,7 +542,7 @@ if not exist config.bat (
       echo set _Server=%_Server% >> config.bat
       echo set _RAMmax=%_RAMmax% >> config.bat
       echo set _RAMmin=%_RAMmin% >> config.bat
-      echo set _Java=%_Java% >> config.bat
+      echo set "_Java=%_Java%" >> config.bat
       echo set _EULA=%_eula% >> config.bat
       echo set _Frpc=%_Frpc% >> config.bat
       echo set _Frpc_Config=%_Frpc_Config% >> config.bat
