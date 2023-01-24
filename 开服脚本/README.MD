@@ -31,10 +31,10 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 
 ## 支持检测的核心：
 目前可自动检测的核心有:
-1. Fabric
-2. Quilt
-3. Bungeecord
-4. Vanilla
+- Fabric
+- Quilt
+- Bungeecord
+- Vanilla
 
 ---
 
