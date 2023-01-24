@@ -1,6 +1,7 @@
 # 一个小小的代码仓库
-这没什么，只有我自己做的小玩意儿<br>
-有BUG请Email:<xieyuen163@163.com>
+这没什么，只有我自己做的小玩意儿
+
+### 有BUG请Email:<xieyuen163@163.com>
 
 ---
 
@@ -16,4 +17,4 @@ MC服务器开服脚本
 
 ---
 
-## MCDR installer
+## [MCDR Installer](/MCDRinstaller/README.md)
