@@ -29,6 +29,15 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 
 ---
 
+## 支持检测的核心：
+目前可自动检测的核心有:
+1. Fabric
+2. Quilt
+3. Bungeecord
+4. Vanilla
+
+---
+
 ## 更新日志
 ### 已有版本:
 - 0.0
@@ -97,7 +106,7 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 >2. 添加功能: 
 >       1. 更改内存初始占用大小
 >       2. 更改内存最大占用大小
->       3. 自动检测服务器核心<br> [查看支持自动检测的核心](<README.MD> "Fabric, Quilt, Forge, Vanilla")
+>       3. 自动检测服务器核心<br> [查看支持自动检测的核心](<#支持检测的核心> "Fabric, Quilt, Forge, Vanilla")
 >       4. 手动更改服务器核心
 >       5. EULA未同意提示【有待优化】
 
