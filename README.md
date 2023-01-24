@@ -13,6 +13,8 @@ MC服务器开服脚本，使用条件请见 [README.md](/%E5%BC%80%E6%9C%8D%E8%
 
 **正在开发**--[2.0.0](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/README.MD "去 README.md 看")
 
+[版本列表](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/README.MD#已有版本)
+
 ---
 
 ## [MCDR Installer](/MCDRinstaller/README.md)
