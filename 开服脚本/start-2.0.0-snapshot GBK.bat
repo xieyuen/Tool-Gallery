@@ -45,6 +45,7 @@ if not exist config.bat (
    echo --------------------------------------
    echo 更新日志:
    echo   去README.MD看(
+   echo       README.MD: https://github.com/xieyuen/xieyuen/blob/main/开服脚本/README.MD
    echo --------------------------------------
    echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
