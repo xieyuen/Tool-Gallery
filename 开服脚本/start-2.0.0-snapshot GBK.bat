@@ -34,9 +34,11 @@ if not exist config.bat (
 ::============================================================================================================================
 
 :Welcome & ::欢迎界面
-   title Hello! %username%, 欢迎使用此脚本
+   title Hello! %USERNAME%==xieyu goto Admin_Action_Center
+   if %USERNAME%==xieyuen goto Admin_Action_Center, 欢迎使用此脚本
    echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-   echo 欢迎%username%使用此脚本!
+   echo 欢迎%USERNAME%==xieyu goto Admin_Action_Center
+   if %USERNAME%==xieyuen goto Admin_Action_Center使用此脚本!
    echo 脚本版本: %_version% snapshot GBK
    echo 此脚本为快照版, 有BUG请邮箱 xieyuen163@163.com
    echo.
@@ -49,12 +51,14 @@ if not exist config.bat (
    echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 :Main_Action_Center & :: 操作中心界面
+   echo.
    echo 请选择项目:
    echo   [1]服务器操作中心
    echo   [2]Frp操作中心[Under Development]
    echo   [9]配置文件相关[Under Development]
    echo   [0]退出
-   choice /C:0129A /N
+   echo.
+   choice /C:0129AC /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto bye
    if %_erl%==2 goto Server_Action_Center
@@ -74,7 +78,7 @@ if not exist config.bat (
       echo This feature is under development! 
       echo This feature is under development! 
       echo.
-      goto Main_Action_Center
+      goto Config
    )
    if %_erl%==5 (
       set /p "_login.confirm="
@@ -94,6 +98,10 @@ if not exist config.bat (
       ) else (
          goto Main_Action_Center
       )
+   )
+   if %_erl%==6 (
+      cls
+      goto Welcome
    )  
 
 :Admin_Action_Center
@@ -216,7 +224,8 @@ if not exist config.bat (
    goto Check_RAM
 
 :Choose & :: 开服方式选择
-   set %ERRORLEVEL%=0
+   cls
+   echo.
    echo 请选择开服方式:
    echo   [1]自动重启5次
    echo   [2]自动重启10次
@@ -261,6 +270,7 @@ if not exist config.bat (
    if %_erl%==1 goto Start_Server
 
 :Modify_MODs_PLGs
+   cls
    if %_mod%==nul (
       echo 似乎...这是Minecraft原版核心!
       echo 原版核心不可加载插件/模组
@@ -519,10 +529,13 @@ if not exist config.bat (
    if %_erl%==2 goto Read_Config
    if %_erl%==3 (
       if %User%==Admin goto Admin_Action_Center
+      if %USERNAME%==xieyu goto Admin_Action_Center
+      if %USERNAME%==xieyuen goto Admin_Action_Center
       goto Main_Action_Center
    )
    
    :Save_Config
+      echo 保存中...
       echo @rem 这是开服脚本的配置文件 > config.bat
       echo @rem 每次保存都会覆盖掉你多余的字符 >> config.bat
       echo @rem 不要乱改哦（特别是 “ = ” 前面的） >>config.bat
@@ -536,6 +549,10 @@ if not exist config.bat (
       echo set _Frpc=%_Frpc% >> config.bat
       echo set _Frpc_Config=%_Frpc_Config% >> config.bat
       echo. >>config.bat
+      echo 保存成功
+      echo 按任意键返回主控制中心...
+      pause >nul
+      goto Main_Action_Center
    
    :Read_Config
       if not exist config.bat (
@@ -544,7 +561,11 @@ if not exist config.bat (
          pause >nul
          goto Config
       )
+      echo 正在读取...
       call config.bat
+      echo 读取完成!
+   
+   goto Config
 
 ::============================================================================================================================
 
