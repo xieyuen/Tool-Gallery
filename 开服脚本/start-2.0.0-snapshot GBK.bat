@@ -28,6 +28,7 @@ if not exist config.bat (
    cls
 ) else (
    call config.bat
+   set _config=true
 )
 
 ::============================================================================================================================
@@ -75,13 +76,14 @@ if not exist config.bat (
       echo.
       goto Main_Action_Center
    )
-   if %_erl%==4 (
+   if %_erl%==5 (
       set /p "_login.confirm="
-      if %_login.confirm%=login (
+      if "%_User.login.confirm%=login Admin" (
+         set _User=Admin
          echo User: Admin
          echo Please enter you login password...
-         set "_login.admin.password=" /p
-         if %_login.admin.password%==%_version% (
+         set "_User.admin.loginpassword=" /p
+         if %_User.admin.loginpassword%==%_version% (
             echo Login Successful!
             goto Admin_Action_Center
          ) else (
@@ -89,9 +91,21 @@ if not exist config.bat (
             pause >nul
             exit /b
          )
+      ) else (
+         goto Main_Action_Center
       )
-      goto Main_Action_Center
-   )
+   )  
+
+:Admin_Action_Center
+   cls
+   echo [1]Frp_Action_Center.
+   echo [2]Config
+   echo [0]exit
+   choice /C:120 /N
+   set _erl=%ERRORLEVEL%
+   if %_erl%==1 goto Frp_Action_Center
+   if %_erl%==2 goto Config
+   if %_erl%==3 goto Main_Action_Center
 
 :Frp_Action_Center
    cls
@@ -112,9 +126,11 @@ if not exist config.bat (
    if %_erl%==3 goto SaveFrp
 
 :Server_Action_Center
-   if %_ACS%==AutoCheckingServer (
-      set "%_ACS%=unAutoCheckingServer"
-      goto AutoCheckingServer
+   if not %_config%==true (
+      if %_ACS%==AutoCheckingServer (
+         set "%_ACS%=unAutoCheckingServer"
+         goto AutoCheckingServer
+      )
    )
    echo 服务器当前设置:
    echo   核心:%_Server% 
@@ -132,7 +148,7 @@ if not exist config.bat (
    echo   [0]返回主操作中心
    echo 输入选择的菜单项:
    choice /C:0123456C /N
-   set _erl=%errorlevel%
+   set _erl=%ERRORLEVEL%
    if %_erl%==1 goto Main_Action_Center
    if %_erl%==2 goto Choose
    if %_erl%==3 goto setServer
@@ -143,7 +159,7 @@ if not exist config.bat (
    if %_erl%==8 (
       cls
       set "_ACS=unAutoCheckingServer"
-      goto Welcome
+      goto Server_Action_Center
    )
 
 ::============================================================================================================================
@@ -210,7 +226,7 @@ if not exist config.bat (
    echo   [0]返回服务器操作中心
    echo 输入选择的菜单项:
    choice /C:12I034 /N
-   set _erl=%errorlevel%
+   set _erl=%ERRORLEVEL%
    if %_erl%==1 (
       set _chk_mod=5
       goto Start_Server
@@ -240,7 +256,7 @@ if not exist config.bat (
    echo 无限模式只能用 Ctrl+C 或 关闭窗口(不推荐) 来关闭服务器
    echo 输入Y确认, 输入N回到选择界面
    choice /C:YN /N
-   set _erl=%errorlevel%
+   set _erl=%ERRORLEVEL%
    if %_erl%==2 goto Choose
    if %_erl%==1 goto Start_Server
 
@@ -257,7 +273,7 @@ if not exist config.bat (
    echo   [3]返回服务器操作中心
    echo 输入选择的菜单项:
    choice /C:120 /N
-   set _erl=%errorlevel%
+   set _erl=%ERRORLEVEL%
    if %_erl%==1 goto Modify_MODs
    if %_erl%==2 goto Modify_PLUGINs
    if %_erl%==3 goto Server_Action_Center
@@ -313,7 +329,7 @@ if not exist config.bat (
    echo [2]启用模组
    echo 直接输入序号
    choice /C:12 /N
-   set _erl=%errorlevel%
+   set _erl=%ERRORLEVEL%
    if %_erl%==1 ( 
      ren ".\%_mods_plgs%" %_mods_plgs%.ban 
      echo 模组/插件 %_mods_plgs% 已禁用 
@@ -435,9 +451,9 @@ if not exist config.bat (
    echo   [2]更改最大值
    echo   [3]更改初始值
    choice /C:123 /N
-   if %errorlevel%==1 set _RAMmax=4096 & set _RAMmin=0 & goto Server_Action_Center
-   if %errorlevel%==2 goto set_RAMmax
-   if %errorlevel%==3 goto set_RAMmin
+   if %ERRORLEVEL%==1 set _RAMmax=4096 & set _RAMmin=0 & goto Server_Action_Center
+   if %ERRORLEVEL%==2 goto set_RAMmax
+   if %ERRORLEVEL%==3 goto set_RAMmin
    if %ERRORLEVEL%==0 goto Server_Action_Center
 
 :AutoCheckingServer & :: 检测核心
@@ -501,7 +517,10 @@ if not exist config.bat (
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto Save_Config
    if %_erl%==2 goto Read_Config
-   if %_erl%==3 goto Main_Action_Center
+   if %_erl%==3 (
+      if %User%==Admin goto Admin_Action_Center
+      goto Main_Action_Center
+   )
    
    :Save_Config
       echo @rem 这是开服脚本的配置文件 > config.bat
@@ -584,7 +603,7 @@ if not exist config.bat (
    echo 按B键重新选择开服模式
    echo 按P键重启整个脚本
    choice /C:CRBP /N
-   set _erl=%errorlevel%
+   set _erl=%ERRORLEVEL%
    if %_erl%==4 (
      cls 
      set "_ACS=unAutoCheckingServer" 
