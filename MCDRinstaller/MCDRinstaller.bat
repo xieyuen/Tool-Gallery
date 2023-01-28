@@ -97,6 +97,7 @@ if %_erl%==2 goto en_us
 :Tools
 
     :Export_startup_script
+    
         echo. >Startup_script.bat
         echo @echo off >>Startup_script.bat
         echo chcp 65001
