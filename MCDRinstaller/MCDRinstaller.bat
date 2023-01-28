@@ -89,7 +89,7 @@ if %_erl%==2 goto en_us
         pause >nul
         pip install mcdreforged -U
         echo Update complete!
-        echo Use the command py -m mcdreforged to turn on MCDR! (Remember to use administrator privileges)
+        echo Use the command "py -m mcdreforged" to turn on MCDR! (Remember to use administrator privileges)
         echo Press any key to exit...
         pause >nul
         exit /b
@@ -108,7 +108,7 @@ if %_erl%==2 goto en_us
         echo    title MCDReforged启动脚本 [重启次数:%_restart%] >>Startup_script.bat
         echo    py -X utf8 mcdreforged >>Startup_script.bat
         echo    echo MCDR将在5秒后启动... >>Startup_script.bat
-        echo    ping 127.0.0.1 -n 6 >>Startup_script.bat
+        echo    @ping 127.0.0.1 -n 6 >>Startup_script.bat
         echo    set /a _restart=+1 >>Startup_script.bat
         echo    goto start >>Startup_script.bat
         echo 启动脚本已生成！
