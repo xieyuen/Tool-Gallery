@@ -2,38 +2,44 @@
 ~~这东西是我随便编的(~~<br>
 <br>
 
-## 
-
 ## 使用前必看
 
 - **脚本要求**
     - 操作系统: **Windows**
     - 版本: Minecraft **Java** Edition
     - ***1.2版本及以下* 需要自己打开脚本编辑部分信息**
-- 脚本只有GBK编码，其他请自行转码
 
-- 有BUG来找我<br>
-    - **Email**: <xieyuen163@163.com>
+- 脚本只有GBK编码，其他请自行转码（
 
-最新版本: [***1.3.7***](<start-1.3.7-snapshot%20GBK.bat> "其实有 2.0.0 (")
+- 有BUG来找我
+    - **Email**: *<xieyuen163@163.com>*
+    - **KOOK**: *xieyuen#9591*
 
-### [默认配置文件](<> "最新版"):
-更改配置文件只能改 **“=”** 后面的
+最新版本: [***1.3.7***](#版本-137 "其实有 2.0.0 (")
+
+### 默认配置文件:
+配置文件仅在 2.0.0 版本及以上可被脚本自动加载，旧版本需要在cmd中运行以便才可加载，并且旧版本无法保存配置.
+
+更改配置文件只能改 **“=”** 后面的，Java路径不需要双引号，直接复制到 [**=**](<> "中间的等于号") 及 [**"**](<> "后面的双引号") 之间即可.
 
 ~~~bat
-@rem 这是开服脚本的配置文件 
+@rem 这是开服脚本的配置文件
 @rem 每次保存都会覆盖掉你多余的字符 
 @rem 不要乱改哦（特别是 “ = ” 前面的） 
 @rem 要改也只能改每行 “=” 后面的 
- 
-set _Server= 
-set _RAMmax=4096 
-set _RAMmin=0 
-set "_Java=.\Java18\bin\java.exe" 
-set _EULA=false
-set _Frpc=.\MEFrp\frpc.exe 
-set _Frpc_Config=.\MEFrp\Frpc.ini 
+@rem 下面就是配置内容啦
 
+@rem 服务器核心名
+set _Server= 
+
+@rem 最大内存占用
+set _RAMmax=4096 
+
+@rem 最小内存占用
+set _RAMmin=0 
+
+@rem Java路径
+set "_Java=.\Java18\bin\java.exe" 
 ~~~
 
 [返回首页](../README.md)
