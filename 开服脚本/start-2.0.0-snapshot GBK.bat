@@ -45,7 +45,8 @@ if not exist config.bat (
    echo --------------------------------------
    echo 更新日志:
    echo   去README.MD看(
-   echo       README.MD: https://github.com/xieyuen/xieyuen/blob/main/开服脚本/README.MD
+   echo       README.MD: 
+   echo           https://github.com/xieyuen/xieyuen/blob/main/开服脚本/README.MD
    echo --------------------------------------
    echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -142,13 +143,13 @@ if not exist config.bat (
    echo 服务器当前设置:
    echo   核心:%_Server% 
    echo   最大内存占用:%_RAMmax%MB 
-   echo   初始内存占用:%_RAMmin%MB
+   echo   最小内存占用:%_RAMmin%MB
    echo   Java路径:%_Java%
    echo 请选择操作:
    echo   [1]开启服务器
    echo   [2]调整服务器核心
    echo   [3]调整最大内存占用
-   echo   [4]调整初始内存占用
+   echo   [4]调整最小内存占用
    echo   [5]禁用/解禁模组和插件
    echo   [6]更改Java路径
    echo   [C]清屏
@@ -213,7 +214,7 @@ if not exist config.bat (
    goto Server_Action_Center
 
 :set_RAMmin
-   echo 请输入服务器初始内存占用(单位:MB,1GB=1024MB), 默认值:0
+   echo 请输入服务器最小内存占用(单位:MB,1GB=1024MB), 默认值:0
    set /p "_RAMmin="
    goto Check_RAM
 
@@ -437,9 +438,9 @@ if not exist config.bat (
    if %_RAMmax%==0 (
      echo emmm...最大为0M...
      echo 服务器怎么跑?
-     echo 应该是初始为0M吧...
+     echo 应该是最小为0M吧...
      if %_RAMmin%==0 (
-        echo 初始也是0M?
+        echo 最小也是0M?
         echo 先给你重置了先
         set "_RAMmax=4096"
         goto Server_Action_Center
@@ -454,11 +455,11 @@ if not exist config.bat (
       echo 设置成功! 
       goto Server_Action_Center
    )
-   echo [ERROR]:服务器内存初始值大于最大值 ( max:%_RAMmax% min:%_RAMmin% )
+   echo [ERROR]:服务器内存最小值大于最大值 ( max:%_RAMmax% min:%_RAMmin% )
    echo 请选择操作:
    echo   [1]重置值
    echo   [2]更改最大值
-   echo   [3]更改初始值
+   echo   [3]更改最小值
    choice /C:123 /N
    if %ERRORLEVEL%==1 set _RAMmax=4096 & set _RAMmin=0 & goto Server_Action_Center
    if %ERRORLEVEL%==2 goto set_RAMmax
@@ -535,18 +536,22 @@ if not exist config.bat (
    
    :Save_Config
       echo 保存中...
-      echo @rem 这是开服脚本的配置文件 > config.bat
-      echo @rem 每次保存都会覆盖掉你多余的字符 >> config.bat
+      echo @rem 这是开服脚本的配置文件 >config.bat
+      echo @rem 每次保存都会覆盖掉你多余的字符 >>config.bat
       echo @rem 不要乱改哦（特别是 “ = ” 前面的） >>config.bat
       echo @rem 要改也只能改每行 “=” 后面的 >>config.bat
       echo. >>config.bat
-      echo set _Server=%_Server% >> config.bat
-      echo set _RAMmax=%_RAMmax% >> config.bat
-      echo set _RAMmin=%_RAMmin% >> config.bat
-      echo set "_Java=%_Java%" >> config.bat
-      echo set _EULA=%_eula% >> config.bat
-      echo set _Frpc=%_Frpc% >> config.bat
-      echo set _Frpc_Config=%_Frpc_Config% >> config.bat
+      echo @rem 服务器核心名 >>config.bat
+      echo set _Server=%_Server% >>config.bat
+      echo. >>config.bat
+      echo @rem 最大内存占用 >>config.bat
+      echo set _RAMmax=%_RAMmax% >>config.bat
+      echo. >>config.bat
+      echo @rem 最小内存占用 >>config.bat
+      echo set _RAMmin=%_RAMmin% >>config.bat
+      echo. >>config.bat
+      echo @rem Java路径
+      echo set "_Java=%_Java%" >>config.bat
       echo. >>config.bat
       echo 保存成功
       echo 按任意键返回主控制中心...
