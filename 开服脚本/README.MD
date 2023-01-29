@@ -12,12 +12,29 @@
     - ***1.2版本及以下* 需要自己打开脚本编辑部分信息**
 - 脚本只有GBK编码，其他请自行转码
 
----
-
 - 有BUG来找我<br>
     - **Email**: <xieyuen163@163.com>
 
 最新版本: [***1.3.7***](<start-1.3.7-snapshot%20GBK.bat> "其实有 2.0.0 (")
+
+### [默认配置文件](<> "最新版"):
+更改配置文件只能改 **“=”** 后面的
+
+~~~bat
+@rem 这是开服脚本的配置文件 
+@rem 每次保存都会覆盖掉你多余的字符 
+@rem 不要乱改哦（特别是 “ = ” 前面的） 
+@rem 要改也只能改每行 “=” 后面的 
+ 
+set _Server= 
+set _RAMmax=4096 
+set _RAMmin=0 
+set "_Java=.\Java18\bin\java.exe" 
+set _EULA=false
+set _Frpc=.\MEFrp\frpc.exe 
+set _Frpc_Config=.\MEFrp\Frpc.ini 
+
+~~~
 
 [返回首页](../README.md)
 
@@ -67,6 +84,7 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 >2. ~~添加自动检测对Forge等核心的支持~~
 >3. ~~代码大改写!~~
 >4. ~~添加操作中心"清屏"选项~~
+>5. ~~添加[配置文件相关内容](比如保存配置文件，读取配置文件（但是格式为.bat "有什么呢？")~~
 
 ---
 
