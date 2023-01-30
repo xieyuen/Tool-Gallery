@@ -30,16 +30,16 @@
 @rem 下面就是配置内容啦
 
 @rem 服务器核心名
-set _Server= 
+set _Server=
 
 @rem 最大内存占用
-set _RAMmax=4096 
+set _RAMmax=4096
 
 @rem 最小内存占用
-set _RAMmin=0 
+set _RAMmin=0
 
 @rem Java路径
-set "_Java=.\Java18\bin\java.exe" 
+set "_Java=.\Java18\bin\java.exe"
 ~~~
 
 [返回首页](../README.md)
