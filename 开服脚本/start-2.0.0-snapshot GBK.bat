@@ -1,12 +1,5 @@
-@echo off
-@rem 更新目标
-@rem 1.给文本上色!
-@rem 2.优化EULA协议
-@rem  2.1.读取EULA内容
-@rem  2.2.自动同意EULA
-@rem 3.将参数保存至Config文件
-::===========================================================================================================================
 :: 调试
+@echo off
 set _version=2.0.0
 if not exist config.bat (
    set "_ACS=AutoCheckingServer"
@@ -58,7 +51,7 @@ if not exist config.bat (
    echo   [9]配置文件相关[Under Development]
    echo   [0]退出
    echo.
-   choice /C:0129AC /N
+   choice /C:0129C /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto bye
    if %_erl%==2 goto Server_Action_Center
@@ -68,7 +61,9 @@ if not exist config.bat (
       echo This feature is under development!
       echo This feature is under development! 
       echo This feature is under development! 
-      echo. 
+      echo.
+      echo We don't enable it
+      echo.
       goto Main_Action_Center
    )
    if %_erl%==4 (
@@ -81,25 +76,6 @@ if not exist config.bat (
       goto Config
    )
    if %_erl%==5 (
-      set /p "_login.confirm="
-      if "%_User.login.confirm%=login Admin" (
-         set _User=Admin
-         echo User: Admin
-         echo Please enter you login password...
-         set "_User.admin.loginpassword=" /p
-         if %_User.admin.loginpassword%==%_version% (
-            echo Login Successful!
-            goto Admin_Action_Center
-         ) else (
-            echo WRONG PASSWORD!
-            pause >nul
-            exit /b
-         )
-      ) else (
-         goto Main_Action_Center
-      )
-   )
-   if %_erl%==6 (
       cls
       goto Welcome
    )  
@@ -536,22 +512,22 @@ if not exist config.bat (
    
    :Save_Config
       echo 保存中...
-      echo @rem 这是开服脚本的配置文件 >config.bat
-      echo @rem 每次保存都会覆盖掉你多余的字符 >>config.bat
-      echo @rem 不要乱改哦（特别是 “ = ” 前面的） >>config.bat
-      echo @rem 要改也只能改每行 “=” 后面的 >>config.bat
+      echo @rem 这是开服脚本的配置文件>config.bat
+      echo @rem 每次保存都会覆盖掉你多余的字符>>config.bat
+      echo @rem 不要乱改哦（特别是 “ = ” 前面的）>>config.bat
+      echo @rem 要改也只能改每行 “=” 后面的>>config.bat
       echo. >>config.bat
-      echo @rem 服务器核心名 >>config.bat
-      echo set _Server=%_Server% >>config.bat
+      echo @rem 服务器核心名>>config.bat
+      echo set _Server=%_Server%>>config.bat
       echo. >>config.bat
-      echo @rem 最大内存占用 >>config.bat
-      echo set _RAMmax=%_RAMmax% >>config.bat
+      echo @rem 最大内存占用>>config.bat
+      echo set _RAMmax=%_RAMmax%>>config.bat
       echo. >>config.bat
-      echo @rem 最小内存占用 >>config.bat
-      echo set _RAMmin=%_RAMmin% >>config.bat
+      echo @rem 最小内存占用>>config.bat
+      echo set _RAMmin=%_RAMmin%>>config.bat
       echo. >>config.bat
-      echo @rem Java路径
-      echo set "_Java=%_Java%" >>config.bat
+      echo @rem Java路径>>config.bat
+      echo set "_Java=%_Java%">>config.bat
       echo. >>config.bat
       echo 保存成功
       echo 按任意键返回主控制中心...
