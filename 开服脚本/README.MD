@@ -1,6 +1,6 @@
 # 服务器开服脚本
 
-##### ~~这东西是我随便编的(~~
+~~这东西是我随便编的(~~
 
 ## 使用前必看
 
@@ -12,6 +12,7 @@
 - 脚本只有GBK编码，其他请自行转码（
 
 - 有BUG来找我
+![](https://api.fishwo.com/badge/diy/FixBug/Email?radius=4&right_color=3d3d3d&left_color=ff0000)![](https://api.fishwo.com/badge/kook/FixBug?radius=4)
     - **Email**: ***<xieyuen163@163.com>***
     - **KOOK**: *xieyuen#9591*
 
@@ -31,7 +32,7 @@
 >**请使用 *GBK* 编码编辑配置文件！**<br>
 >**请使用 *GBK* 编码编辑配置文件！**
 
-~~~ bat
+~~~bat
 @rem 这是开服脚本的配置文件
 @rem 每次保存都会覆盖掉你多余的字符 
 @rem 不要乱改哦（特别是 “ = ” 前面的） 
@@ -41,10 +42,10 @@
 @rem 服务器核心名
 set _Server=Start.jar
 
-@rem 最大内存占用，单位 M
+@rem 最大内存占用，单位 MB
 set _RAMmax=4096
 
-@rem 最小内存占用，单位 M
+@rem 最小内存占用，单位 MB
 set _RAMmin=0
 
 @rem Java路径
