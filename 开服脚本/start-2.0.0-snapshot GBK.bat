@@ -340,31 +340,43 @@ cls
 
    echo 请输入核心名称:
    set /p "_Server="
-::   if not exist ".\*.jar" (
-::      echo 没有核心？
-::      echo 赶紧去下载一个
-::      echo 想要开什么服务器？
-::      echo     [1] vanilla 原版服务器
-::      echo     [2] Fabric 推荐高版本
-::      echo     [3] Forge 推荐低版本
-::      echo     [4] Carpet 必须安装Fabric
-::      echo     [5] MCDR qb不是梦(但是 MCDR 只是服务器的壳子，里面还要装服务器...
-::      echo     [6] Bukkit
-::      echo     [7] Paper
-::      echo     [8] Purpur
-::      echo     [9] Arclight
-::      echo     [0] 打开浏览器
-::      choice /C:1234567890 /N
-::      pause >nul
-::      set _erl=%ERRORLEVEL%
-::      if %_erl%==1
-::      if %_erl%==2
-::      if %_erl%==3
-::      if %_erl%==4
-::      if %_erl%==5 (
-::         start https://github.com/xieyuen/BatchTools/blob/main/MCDRinstaller/README.md
-::      )
-::   )
+   if not exist ".\*.jar" (
+      echo 没有核心？
+      echo 赶紧去下载一个
+      echo 想要开什么服务器？
+      echo     [1] vanilla 原版服务器
+      echo     [2] Fabric 推荐高版本
+      echo     [3] Forge 推荐低版本
+      echo     [4] Carpet 必须安装Fabric
+      echo     [5] MCDR qb不是梦(但是 MCDR 只是服务器的壳子，里面还要装服务器...
+      echo     [6] Bukkit
+      echo     [7] Paper
+      echo     [8] Purpur
+      echo     [9] Arclight
+      echo     [0] 打开浏览器
+      choice /C:1234567890 /N
+      pause >nul
+      set _erl=%ERRORLEVEL%
+      if %_erl%==1 (
+         start https://www.fastmirror.net/#/download/Vanilla?coreVersion=release
+      )
+      if %_erl%==2 (
+         start
+      )
+      if %_erl%==3(
+         start https://www.fastmirror.net/#/download/Forge?coreVersion=1.19.3
+      )
+      if %_erl%==4
+      if %_erl%==5 (
+         start https://github.com/xieyuen/BatchTools/blob/main/MCDRinstaller/README.md
+      )
+      if %_erl%==8 (
+         start https://www.fastmirror.net/#/download/Purpur?coreVersion=1.19.3
+      )
+      if %_erl%==9 (
+         start https://www.fastmirror.net/#/download/Arclight?coreVersion=GreatHorn
+      )
+   )
    if exist ".\%_Server%" (
       echo 检测到核心:%_Server% 
       set "_ACS=unAutoCheckingServer"
@@ -451,7 +463,11 @@ cls
    echo   [2]更改最大值
    echo   [3]更改最小值
    choice /C:123 /N
-   if %ERRORLEVEL%==1 set _RAMmax=4096 & set _RAMmin=0 & goto Server_Action_Center
+   if %ERRORLEVEL%==1 (
+      set _RAMmax=4096
+      set _RAMmin=0
+      goto Server_Action_Center
+   )
    if %ERRORLEVEL%==2 goto set_RAMmax
    if %ERRORLEVEL%==3 goto set_RAMmin
    if %ERRORLEVEL%==0 goto Server_Action_Center
