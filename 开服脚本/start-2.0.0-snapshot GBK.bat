@@ -558,6 +558,10 @@ cls
       echo @rem Java路径>>config.bat
       echo set "_Java=%_Java%">>config.bat
       echo. >>config.bat
+      echo @rem EULA是否同意>>config.bat
+      echo @rem 同意 true>>config.bat
+      echo @rem 不同意 false>>config.bat
+      echo set "_eula=%_eula%">>config.bat
 
       echo 保存成功
       echo 按任意键返回主控制中心...

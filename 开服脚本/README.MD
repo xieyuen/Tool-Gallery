@@ -5,14 +5,13 @@
 ## 使用前必看
 
 - **脚本要求**
-    - 操作系统: **Windows**
+    - 操作系统: [**Windows**](<> "有可能在Windows 3.0都能用（")
     - 版本: Minecraft **Java** Edition
     - ~~***1.2版本及以下* 需要自己打开脚本编辑部分信息**~~
 
 - 脚本只有GBK编码，其他请自行转码（
 
 - 有BUG来找我
-![](https://api.fishwo.com/badge/diy/FixBug/Email?radius=4&right_color=3d3d3d&left_color=ff0000)![](https://api.fishwo.com/badge/kook/FixBug?radius=4)
     - **Email**: ***<xieyuen163@163.com>***
     - **KOOK**: *xieyuen#9591*
 
@@ -28,7 +27,7 @@
 
 配置文件名为 `config.bat`
 
->**请使用 [*GBK*](https://zhidao.baidu.com/question/1180967443112212019.html "在 Windows 简体中文版本中，记事本显示的 ANSI 编码即为 GBK 编码，但请尽量使用专业的文本编辑器，避免使用 Windows 自带的记事本，比如使用 VSCode.") 编码编辑配置文件！**<br>
+>**请使用 [*GBK*](<https://zhidao.baidu.com/question/1180967443112212019.html> "在 Windows 简体中文版本中，记事本显示的 ANSI 编码即为 GBK 编码，但请尽量使用专业的文本编辑器，避免使用 Windows 自带的记事本，比如使用 VSCode.") 编码编辑配置文件！**<br>
 >**请使用 *GBK* 编码编辑配置文件！**<br>
 >**请使用 *GBK* 编码编辑配置文件！**
 
@@ -50,6 +49,11 @@ set _RAMmin=0
 
 @rem Java路径
 set "_Java=.\Java18\bin\java.exe"
+
+@rem EULA是否同意
+@rem 同意 true
+@rem 不同意 false
+set "_eula=false"
 ~~~
 
 ---
