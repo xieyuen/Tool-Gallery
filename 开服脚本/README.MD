@@ -62,7 +62,7 @@ set "_eula=false"
 
 Q: 为什么下载到的脚本名字版本和界面显示版本对不上?<br>
 
-A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是这篇")为准，脚本版本以[名字](<#已有版本> "除非你改名了")为准
+A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](</开服脚本/README.MD> "就是这篇")为准，脚本版本以[名字](<#已有版本> "除非你改名了")为准
 
 ---
 
@@ -101,7 +101,7 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 ---
 
 >### ~~更新预告 !~~
->#### ~~版本 [*2.0.0*](<> "你想看?想得美")~~
+>#### ~~版本 [*2.0.0*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-2.0.0-snapshot%20GBK.bat)~~
 >1. ~~尝试将参数保存至Config文件内并读取~~
 >2. ~~添加自动检测对Forge等核心的支持~~
 >3. ~~代码大改写!~~
@@ -110,20 +110,20 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 
 ---
 
->### 版本 [*1.3.7*](start-1.3.7-snapshot%20GBK.bat)<br>
+>### 版本 [*1.3.7*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.7-snapshot%20GBK.bat)<br>
 >1. 添加模组/插件内添加mods/plugins文件夹的功能
 >2. 优化了手动选择核心出错的界面
 >3. 优化了部分代码
 
 ---
 
->### 版本 [*1.3.6*](start-1.3.6-snapshot%20GBK.bat)<br>
+>### 版本 [*1.3.6*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.6-snapshot%20GBK.bat)<br>
 >1. 添加Settings界面退出选项
 >2. 优化Java路径选择
 
 ---
 
->### 版本 [*1.3.5*](start-1.3.5-snapshot%20GBK.bat)<br>
+>### 版本 [*1.3.5*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.5-snapshot%20GBK.bat)<br>
 >1. [添加对.disabled禁用方式读取支持](<> "但是脚本内禁用的方式还是.ban")
 >2. 添加自定义Java路径支持
 >3. 完善vanilla核心检测
@@ -132,20 +132,20 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 
 ---
 
->### 版本 [*1.3.4*](start-1.3.4-snapshot%20GBK.bat)<br>
+>### 版本 [*1.3.4*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.4-snapshot%20GBK.bat)<br>
 >1. 修改vanilla核心检测
 >2. 功能“禁用/解禁模组和插件”<br>增加 是否可加载模组判断
 >3. 优化了部分代码
 
 ---
 
->### 版本 [*1.3.3*](start-1.3.3-snapshot%20GBK.bat)<br>
+>### 版本 [*1.3.3*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.3-snapshot%20GBK.bat)<br>
 >- 添加功能:
 >      - 禁用/解禁模组和插件
 
 ---
 
->### 版本 [*1.3.2*](start-1.3.2-snapshot%20GBK.bat)<br>
+>### 版本 [*1.3.2*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.2-snapshot%20GBK.bat)<br>
 >**又是一个重大更新**
 >1. 添加操作中心
 >2. 添加功能: 
@@ -157,12 +157,12 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 
 ---
 
->### ~~版本 [*1.3.1*](start-1.3.1-snapshot%20GBK.bat)~~
+>### ~~版本 [*1.3.1*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3.1-snapshot%20GBK.bat)~~
 >~~尝试添加文字颜色失败~~
 
 ---
 
->### 版本 [*1.3.0*](start-1.3_GBK.bat)<br>
+>### 版本 [*1.3.0*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.3_GBK.bat)<br>
 >**重大更新!**
 >1. **界面优化**
 >    1. 添加脚本开服方式选择!
@@ -176,13 +176,13 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 
 ---
 
->### 版本 [*1.2*](start-1.2-snapshot%20GBK.bat)<br>
+>### 版本 [*1.2*](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.2-snapshot%20GBK.bat)<br>
 >1. 多了GB2312和UTF8编码
 >2. [添加了亿点点东西](<> "但还是要自己填很多东西")
 
 ---
 
->### 版本 [1.1](start-1.1-test.bat)<br>
+>### 版本 [1.1](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.1-test.bat)<br>
 >1. 改变编码为GB3212
 
 ---
@@ -192,7 +192,7 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](<README.MD> "就是
 >分出了好多个小版本<br>
 >学会自动重启了(
 >
->>#### 版本 [1.0-Bungeecord](start-1.0-bungeecord.bat)<br>
+>>#### 版本 [1.0-Bungeecord](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.0-bungeecord.bat)<br>
 >>>只支持无限重启，代码扔这了(
 
 ~~~ bat
@@ -231,7 +231,7 @@ set /a n+=1
 goto restart
 ~~~
 
->>#### 版本 [1.0-infinity](start-1.0-infinity.bat)<br>
+>>#### 版本 [1.0-infinity](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-1.0-infinity.bat)<br>
 >>>只支持无限重启，代码扔这了(
 
 ~~~ bat

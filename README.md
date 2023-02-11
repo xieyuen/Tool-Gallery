@@ -1,6 +1,8 @@
 # 一个小小的代码仓库
 这没什么，只有我自己做的小玩意儿
 
+[更新历史](/README/UpdateHistory.md)
+
 - 有BUG来找我
     - **Email**: *<xieyuen163@163.com>*
     - **KOOK**: *xieyuen#9591*
