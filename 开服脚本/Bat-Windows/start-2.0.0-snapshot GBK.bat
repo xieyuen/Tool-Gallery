@@ -614,7 +614,7 @@ cls
    if %_chk_mod%==1 goto restart_1
    if %_chk_mod%==5 goto restart_5
    if %_chk_mod%==10 goto restart_10
-   if %_chk_mod%==0 goto Crash
+   if %_chk_mod%==0 goto Server_Crash
    if %_chk_mod%==Custom (
       echo 请输入重启次数
       set /p "_restart_custom="
@@ -622,22 +622,22 @@ cls
 
    :restart_1
 
-      if %_restart%==1 goto Crash
+      if %_restart%==1 goto Server_Crash
       goto Start_Server
 
    :restart_5
 
-      if %_restart%==6 goto Crash 
+      if %_restart%==6 goto Server_Crash 
       goto Start_Server
 
    :restart_10
 
-      if %_restart%==11 goto Crash
+      if %_restart%==11 goto Server_Crash
       goto Start_Server
 
    :restart_Custom
 
-      if %_restart%==%_restart_custom% goto Crash
+      if %_restart%==%_restart_custom% goto Server_Crash
       goto Start_Server
 
    :First_Start & :: 必须修改
@@ -650,7 +650,7 @@ cls
       if exist ".\EULA.TXT" set eula=true
       goto Start_Server
 
-:Crash & :: 崩溃
+:Server_Crash & :: 崩溃
 
    set _restart=0
    title 服务器已停止 :(
