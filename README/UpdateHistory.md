@@ -177,4 +177,9 @@ goto restart
 ## [MCDR Installer](/MCDRinstaller/README.md)
 
 >### 版本 [*1.0*](/MCDRinstaller/MCDRinstaller.bat)
->- 发布 1.0 版本
+>1. 完成内容
+>    - `安装 MCDR`
+>    - `更新 MCDR`
+>    - `MCDR 开启脚本的导出`
+>
+>2. 完成部分对英语的支持

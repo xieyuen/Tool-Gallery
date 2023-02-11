@@ -3,7 +3,7 @@
 set _version=2.0.0
 chcp 936 & :: 设置代码页 GBK
 set _restart=0 & :: 设置重启变量
-set _Restart_num=0 & :: 设置重启显示次数
+set _Restart_num_display=0 & :: 设置重启显示次数
 if not exist config.bat (
    set "_ACS=AutoCheckingServer"
    :Initialize
@@ -204,9 +204,10 @@ cls
    echo   [I]无限自动重启
    echo   [3]测试服务器(重启1次)
    echo   [4]测试服务器(不重启)
+   echo   [5]自定义次数
    echo   [0]返回服务器操作中心
    echo 输入选择的菜单项:
-   choice /C:12I034 /N
+   choice /C:12I0345 /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 (
       set _chk_mod=5
@@ -228,6 +229,9 @@ cls
    if %_erl%==6 (
      set _chk_mod=0
      goto Start_Server
+   )
+   if %_erl%==7 (
+      set _chk_mod=Custom
    )
 
 :Confirm & :: 确认选择[infinity]
@@ -301,16 +305,16 @@ cls
                cd .. 
                goto Server_Action_Center
             ) else ( 
-              if exist ".\%_mods_plgs%.disabled" (
-                 ren ".\%_mods_plgs%.disabled" %_mods_plgs%
-                 echo 模组/插件 %_mods_plgs% 已启用
-                 cd ..
-                 goto Server_Action_Center
-              )
-              echo [ERROR]:出现了一个致命错误
-              echo [ERROR]:在解析文本%_mods_plgs%出错! 
-              pause >nul 
-              exit /b 
+               if exist ".\%_mods_plgs%.disabled" (
+                  ren ".\%_mods_plgs%.disabled" %_mods_plgs%
+                  echo 模组/插件 %_mods_plgs% 已启用
+                  cd ..
+                  goto Server_Action_Center
+               )
+               echo [ERROR]:出现了一个致命错误
+               echo [ERROR]:在解析文本%_mods_plgs%出错! 
+               pause >nul 
+               exit /b 
             ) 
          ) 
       )
@@ -348,7 +352,7 @@ cls
       echo     [2] Fabric 推荐高版本
       echo     [3] Forge 推荐低版本
       echo     [4] Carpet 必须安装Fabric
-      echo     [5] MCDR qb不是梦(但是 MCDR 只是服务器的壳子，里面还要装服务器...
+      echo     [5] MCDR qb不是梦(但是 MCDR 只是服务器的壳子，里面还要装服务器...)
       echo     [6] Bukkit
       echo     [7] Paper
       echo     [8] Purpur
@@ -366,7 +370,12 @@ cls
       if %_erl%==3(
          start https://www.fastmirror.net/#/download/Forge?coreVersion=1.19.3
       )
-      if %_erl%==4
+      if %_erl%==4 (
+         echo 先装 Fabric 再说
+         echo Fabric 和 Fabric Api 是 Carpet 的前置要求
+         echo 可以用 cmcl 的模组下载器下载
+         echo 安装命令：cmcl mod --install --source=cf --id=349239
+      )
       if %_erl%==5 (
          start https://github.com/xieyuen/BatchTools/blob/main/MCDRinstaller/README.md
       )
@@ -376,6 +385,12 @@ cls
       if %_erl%==9 (
          start https://www.fastmirror.net/#/download/Arclight?coreVersion=GreatHorn
       )
+      if %_erl%==10 (
+         start https://www.fastmirror.net
+      )
+      echo 去下载吧（
+      pause >nul
+      exit /b
    )
    if exist ".\%_Server%" (
       echo 检测到核心:%_Server% 
@@ -533,14 +548,14 @@ cls
    choice /C:120 /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto Save_Config
-   if %_erl%==2 goto Read_Config
+   if %_erl%==2 goto Load_Config
    if %_erl%==3 cls & goto Main_Action_Center
 
    :Save_Config
 
       echo 保存中...
 
-      ::这一段代码是保存配置文件的代码
+      :: 这一段代码是保存配置文件的代码
       echo @rem 这是开服脚本的配置文件>config.bat
       echo @rem 每次保存都会覆盖掉你多余的字符>>config.bat
       echo @rem 不要乱改哦（特别是 “ = ” 前面的）>>config.bat
@@ -568,7 +583,7 @@ cls
       pause >nul
       goto Main_Action_Center
 
-   :Read_Config
+   :Load_Config
 
       if not exist config.bat (
          echo 未识别到配置文件，
@@ -586,7 +601,7 @@ cls
 
 :Start_Server
 
-   title 服务器运行中 [重启次数:%_Restart_num%次] 请勿关闭窗口!!!
+   title 服务器运行中 [重启次数:%_Restart_num_display%次] 请勿关闭窗口!!!
    echo =========================================
    echo               服务器正在开启
    echo           The server is starting!
@@ -594,12 +609,16 @@ cls
    powershell /C %_Java% -jar -Dfile.encoding=GBK -Xms%_RAMmin%M -Xmx%_RAMmax%M %_Server% nogui
    ::if %_eula%==false goto First_Start
    set /a _restart+=1
-   set /a _Restart_num+=1
+   set /a _Restart_num_display+=1
    if %_chk_mod%==infinity goto Start_Server
    if %_chk_mod%==1 goto restart_1
    if %_chk_mod%==5 goto restart_5
    if %_chk_mod%==10 goto restart_10
    if %_chk_mod%==0 goto Crash
+   if %_chk_mod%==Custom (
+      echo 请输入重启次数
+      set /p "_restart_custom="
+   )
 
    :restart_1
 
@@ -614,6 +633,11 @@ cls
    :restart_10
 
       if %_restart%==11 goto Crash
+      goto Start_Server
+
+   :restart_Custom
+
+      if %_restart%==%_restart_custom% goto Crash
       goto Start_Server
 
    :First_Start & :: 必须修改
@@ -631,7 +655,7 @@ cls
    set _restart=0
    title 服务器已停止 :(
    echo =========================================
-   echo             服务器总计崩溃%_Restart_num%次
+   echo             服务器总计崩溃%_Restart_num_display%次
    echo          服务器日志文件在.\logs\下
    echo        崩溃报告在.\crash-report\下
    echo =========================================
