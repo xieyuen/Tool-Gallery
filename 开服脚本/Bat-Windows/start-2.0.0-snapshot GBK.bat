@@ -1,5 +1,6 @@
 :: 调试
 @echo off
+doskey #=::
 set _version=2.0.0
 chcp 936 & :: 设置代码页 GBK
 set _restart=0 & :: 设置重启变量
@@ -12,6 +13,7 @@ if not exist config.bat (
       set "_Java=.\Java18\bin\java.exe" & :: 设置 Java 路径
       set "_Frpc=DISABLED"
       set "_Frpc_Config=DISABLED"
+      set _config=false
       :: 必须修改
       if exist eula.txt (
          set _eula=true 
@@ -247,6 +249,9 @@ cls
    if %_erl%==1 goto Start_Server
 
 :Modify_MODs_PLGs
+
+:: 代码写的稀烂...
+:: 我想 DISABLED 掉
 
    cls
    if %_mod%==nul (
@@ -541,6 +546,23 @@ cls
 
 :Config
 
+   if %_config%==false (
+      if not exist config.bat (
+         echo 没有配置文件，正在生成...
+         goto Save_Config
+      )
+      echo 新搞的配置文件?
+      echo 请核对 Github 上的配置文件写法
+      echo 啊等出问题别找我（
+      echo 或者...新生成一个?
+      echo 原配置文件将会被另存为 config-backup.txt
+      echo.
+      echo 按下任意键生成配置文件...
+      echo.
+      pause >nul
+      rename config.bat config-backup.txt
+      goto Save_Config
+   )
    echo 请选择操作:
    echo [1]保存配置
    echo [2]读取配置
@@ -553,6 +575,7 @@ cls
 
    :Save_Config
 
+      echo.
       echo 保存中...
 
       :: 这一段代码是保存配置文件的代码
@@ -615,10 +638,6 @@ cls
    if %_chk_mod%==5 goto restart_5
    if %_chk_mod%==10 goto restart_10
    if %_chk_mod%==0 goto Server_Crash
-   if %_chk_mod%==Custom (
-      echo 请输入重启次数
-      set /p "_restart_custom="
-   )
 
    :restart_1
 
