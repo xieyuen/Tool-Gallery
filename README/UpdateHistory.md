@@ -168,9 +168,8 @@ pause
 goto restart
 ~~~
 
->### 版本 [0.0](#已有版本 "就一行代码而已，还不如用更新的")<br>
->>仅仅只有一行代码:<br>
->>>`java -jar ____.jar`
+[我都没脸放出来了（](/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/Bat-Windows/start-0.0.bat "java -jar ______.jar")
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ---
 
@@ -183,3 +182,6 @@ goto restart
 >    - `MCDR 开启脚本的导出`
 >
 >2. 完成部分对英语的支持
+
+>### 版本 [*1.1*](/MCDRinstaller/MCDRinstaller-1.1.bat)
+>- 添加源码启动修正
