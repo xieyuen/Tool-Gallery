@@ -1,10 +1,19 @@
 :: 调试
 @echo off
-doskey #=::
-set _version=2.0.0
+
+:: doskey 宏命令
+   :: 注释可以用 # 打头，要空格
+   doskey #=::
+   # 就像这样，这是可以的（但是要在doskey后面
+
+   :: 这一下 // 也能做注释前缀了
+   doskey //=::
+   // awa
+
+set _version=2.0.0 & :: 版本号
 chcp 936 & :: 设置代码页 GBK
 set _restart=0 & :: 设置重启变量
-set _Restart_num_display=0 & :: 设置重启显示次数
+set _restart_dp=0 & :: 设置重启显示次数
 if not exist config.bat (
    set "_ACS=AutoCheckingServer"
    :Initialize
@@ -58,7 +67,10 @@ cls
    choice /C:0129C /N
    set _erl=%ERRORLEVEL%
    if %_erl%==1 goto bye
-   if %_erl%==2 goto Server_Action_Center
+   if %_erl%==2 (
+      cls
+      goto Server_Action_Center
+   )
    if %_erl%==3 (
       cls 
       echo.
@@ -71,12 +83,7 @@ cls
       goto Main_Action_Center
    )
    if %_erl%==4 (
-      cls 
-      echo.
-      echo This feature is under development! 
-      echo This feature is under development! 
-      echo This feature is under development! 
-      echo.
+      cls
       goto Config
    )
    if %_erl%==5 (
@@ -254,7 +261,7 @@ cls
 :: 我想 DISABLED 掉
 
    cls
-   if %_mod%==nul (
+   if %_mod%==false (
       echo 似乎...这是Minecraft原版核心!
       echo 原版核心不可加载插件/模组
       echo 正在退回...
@@ -579,6 +586,7 @@ cls
       echo 保存中...
 
       :: 这一段代码是保存配置文件的代码
+      :: >>config.bat 和 >config.bat 都是写入配置文件的
       echo @rem 这是开服脚本的配置文件>config.bat
       echo @rem 每次保存都会覆盖掉你多余的字符>>config.bat
       echo @rem 不要乱改哦（特别是 “ = ” 前面的）>>config.bat
@@ -624,7 +632,7 @@ cls
 
 :Start_Server
 
-   title 服务器运行中 [重启次数:%_Restart_num_display%次] 请勿关闭窗口!!!
+   title 服务器运行中 [重启次数:%_restart_dp%次] 请勿关闭窗口!!!
    echo =========================================
    echo               服务器正在开启
    echo           The server is starting!
@@ -632,7 +640,7 @@ cls
    powershell /C %_Java% -jar -Dfile.encoding=GBK -Xms%_RAMmin%M -Xmx%_RAMmax%M %_Server% nogui
    ::if %_eula%==false goto First_Start
    set /a _restart+=1
-   set /a _Restart_num_display+=1
+   set /a _restart_dp+=1
    if %_chk_mod%==infinity goto Start_Server
    if %_chk_mod%==1 goto restart_1
    if %_chk_mod%==5 goto restart_5
@@ -674,7 +682,7 @@ cls
    set _restart=0
    title 服务器已停止 :(
    echo =========================================
-   echo             服务器总计崩溃%_Restart_num_display%次
+   echo             服务器总计崩溃%_restart_dp%次
    echo          服务器日志文件在.\logs\下
    echo        崩溃报告在.\crash-report\下
    echo =========================================
@@ -687,7 +695,7 @@ cls
    if %_erl%==4 (
      cls 
      set "_ACS=unAutoCheckingServer" 
-     goto Initialize
+     goto Welcome
    )
    if %_erl%==3 goto Choose
    if %_erl%==2 goto Check
