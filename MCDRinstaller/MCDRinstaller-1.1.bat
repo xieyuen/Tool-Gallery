@@ -49,10 +49,15 @@ if %_erl%==2 goto en_us
             echo 你从源码启动？？？
             echo 如果你只是一个普通的 MCDR 用户，请按任意键继续更新
             echo 如果你是 MCDR 的开发者，那请关闭此脚本，这是为 MCDR 用户开发的安装脚本
-            pause >nul
+            echo 接下来将会删除 MCDR 在此目录下的源代码
+            echo.
+            pause
+            echo.
             echo 给你反悔的机会
             echo 这将会删除多余的文件
             echo 确定？
+            echo 按下任意键代表你确定删除 MCDR 的源代码
+            echo 否则请关闭窗口
             pause >nul
 
             @echo on 
@@ -70,8 +75,8 @@ if %_erl%==2 goto en_us
             @del /q .\README.md
             @del /q .\requirements.txt
             @del /q .\setup.py
-
             @echo off
+            
             echo 准备更新...
 
         ) else (

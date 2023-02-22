@@ -2,7 +2,8 @@
 @echo off
 
 :: doskey 宏命令
-   :: 注释可以用 # 打头，要空格
+
+   :: 后面的注释可以用 # 打头，要空格
    doskey #=::
    # 就像这样，这是可以的（但是要在doskey后面
 
@@ -10,11 +11,17 @@
    doskey //=::
    // awa
 
+:: 行尾注释要在最后加 '&' 才能作为注释
+:: 就像下面的，记得要空格
+
 set _version=2.0.0 & :: 版本号
 chcp 936 & :: 设置代码页 GBK
 set _restart=0 & :: 设置重启变量
 set _restart_dp=0 & :: 设置重启显示次数
 if not exist config.bat (
+   echo 第一次使用？
+   echo 建议先生成一下配置文件
+   start https://github.com/xieyuen/BatchTools/blob/main/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/README.MD#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6
    set "_ACS=AutoCheckingServer"
    :Initialize
       set _RAMmax=4096
@@ -587,6 +594,10 @@ cls
 
       :: 这一段代码是保存配置文件的代码
       :: >>config.bat 和 >config.bat 都是写入配置文件的
+      :: ^^^^^^^^^^^^    ^^^^^^^^^^^
+      ::  在下面加行        覆盖写入
+      ::
+      :: 'echo.' 作为换行
       echo @rem 这是开服脚本的配置文件>config.bat
       echo @rem 每次保存都会覆盖掉你多余的字符>>config.bat
       echo @rem 不要乱改哦（特别是 “ = ” 前面的）>>config.bat
@@ -638,7 +649,7 @@ cls
    echo           The server is starting!
    echo =========================================
    powershell /C %_Java% -jar -Dfile.encoding=GBK -Xms%_RAMmin%M -Xmx%_RAMmax%M %_Server% nogui
-   ::if %_eula%==false goto First_Start
+   // if %_eula%==false goto First_Start
    set /a _restart+=1
    set /a _restart_dp+=1
    if %_chk_mod%==infinity goto Start_Server
