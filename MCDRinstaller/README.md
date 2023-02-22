@@ -10,5 +10,5 @@
 
 哦对了，看看这个
 
->![](../README/TrueMCDRFiles.jpg)
+![](../README/TrueMCDRFiles.jpg)
 >流传在 [MCDReforged 讨论群](<https://jq.qq.com/?_wv=1027&k=bCyMlrWD> "100% Vanilla!") 的图片
