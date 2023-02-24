@@ -1,6 +1,6 @@
 # 更新历史 Update History
 
-| 脚本名称: | [**MCDR Installer**](#mcdr-installer) | [**开服脚本**](#开服脚本) |
+| 脚本名称: | [**开服脚本**](#开服脚本) | [**MCDR Installer**](#mcdr-installer) |
 | :-: | :-----------: | :----------: |
 | 最新版本 | 1.3.7 | 1.1 |
 | 快照版 | 2.0.0 | None |
