@@ -84,18 +84,18 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](</开服脚本/READ
 ### 已有版本
 
 - ~~0.0~~
-- [1.0](/README/UpdateHistory.md#版本-10)
-    - [1.1](/README/UpdateHistory.md#版本-11)
-    - [1.2](/README/UpdateHistory.md#版本-12)
+- [1.0](/ReadmeFiles/UpdateHistory.md#版本-10)
+    - [1.1](/ReadmeFiles/UpdateHistory.md#版本-11)
+    - [1.2](/ReadmeFiles/UpdateHistory.md#版本-12)
     - ~~1.3~~
-        - [1.3.0](/README/UpdateHistory.md#版本-130)
-        - [~~1.3.1~~](/README/UpdateHistory.md#版本-131)
-        - [1.3.2](/README/UpdateHistory.md#版本-132)
-        - [1.3.3](/README/UpdateHistory.md#版本-133)
-        - [1.3.4](/README/UpdateHistory.md#版本-134)
-        - [1.3.5](/README/UpdateHistory.md#版本-135)
-        - [1.3.6](/README/UpdateHistory.md#版本-136)
-        - [1.3.7](/README/UpdateHistory.md#版本-137)
+        - [1.3.0](/ReadmeFiles/UpdateHistory.md#版本-130)
+        - [~~1.3.1~~](/ReadmeFiles/UpdateHistory.md#版本-131)
+        - [1.3.2](/ReadmeFiles/UpdateHistory.md#版本-132)
+        - [1.3.3](/ReadmeFiles/UpdateHistory.md#版本-133)
+        - [1.3.4](/ReadmeFiles/UpdateHistory.md#版本-134)
+        - [1.3.5](/ReadmeFiles/UpdateHistory.md#版本-135)
+        - [1.3.6](/ReadmeFiles/UpdateHistory.md#版本-136)
+        - [1.3.7](/ReadmeFiles/UpdateHistory.md#版本-137)
 - [~~2.0~~](#版本-200)
 
 ---
@@ -116,4 +116,4 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](</开服脚本/READ
 >1. 添加Settings界面退出选项
 >2. 优化Java路径选择
 
-更多更新信息请在 [**这里**](/README/UpdateHistory.md#开服脚本 "Update History") 查看
+更多更新信息请在 [**这里**](/ReadmeFiles/UpdateHistory.md#开服脚本 "Update History") 查看
