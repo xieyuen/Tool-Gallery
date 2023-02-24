@@ -1,0 +1,1 @@
+Java -jar -Xmx______G -Xms______G ______.jar
