@@ -116,4 +116,4 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](</开服脚本/READ
 >1. 添加Settings界面退出选项
 >2. 优化Java路径选择
 
-更多更新信息请在 [这里](/README/UpdateHistory.md#开服脚本 "Update History") 查看
+更多更新信息请在 [**这里**](/README/UpdateHistory.md#开服脚本 "Update History") 查看
