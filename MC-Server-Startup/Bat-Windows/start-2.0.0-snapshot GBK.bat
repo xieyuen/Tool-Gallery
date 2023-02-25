@@ -1,16 +1,7 @@
 :: 调试
 @echo off
 
-:: doskey 宏命令
-
-   :: 后面的注释可以用 # 打头，要空格
-   doskey #=::
-   # 就像这样，这是可以的（但是要在doskey后面
-
-   :: 这一下 // 也能做注释前缀了
-   doskey //=::
-   // 一样的，要在Doskey后面
-
+:: 脚本编辑注意事项:
 :: 行尾注释要在最后加 '&' 才能作为注释
 :: 就像下面的，记得要空格
 
@@ -18,29 +9,30 @@ set _version=2.0.0 & :: 版本号
 chcp 936 & :: 设置代码页 GBK
 set _restart=0 & :: 设置重启变量
 set _restart_dp=0 & :: 设置重启显示次数
+cls
 if not exist config.bat (
    echo 第一次使用？
    echo 生成配置文件中...
-   start "https://github.com/xieyuen/Tool-Gallery/blob/main/%E5%BC%80%E6%9C%8D%E8%84%9A%E6%9C%AC/README.MD#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"
+   start "https://github.com/xieyuen/Tool-Gallery/blob/main/MC-Server-Startup/README.MD#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"
    set "_config=false"
    goto Save_Config
-   set "_ACS=AutoCheckingServer"
-   :Initialize
-      set _RAMmax=4096
-      set _RAMmin=0
-      set "_Java=.\Java18\bin\java.exe" & :: 设置 Java 路径
-      set "_Frpc=DISABLED"
-      set "_Frpc_Config=DISABLED"
-      set _config=false
-      :: 必须修改
-      if exist eula.txt (
-         set _eula=true 
-      ) else ( 
-         set _eula=false 
-      )
-) else (
-   call config.bat
-   set _config=true
+::    set "_ACS=AutoCheckingServer"
+::    :Initialize
+::       set _RAMmax=4096
+::       set _RAMmin=0
+::       set "_Java=.\Java18\bin\java.exe" & :: 设置 Java 路径
+::       set "_Frpc=DISABLED"
+::       set "_Frpc_Config=DISABLED"
+::       set _config=false
+::       :: 必须修改
+::       if exist eula.txt (
+::          set _eula=true 
+::       ) else ( 
+::          set _eula=false 
+::       )
+:: ) else (
+::    call config.bat
+::    set _config=true
 )
 cls
 
@@ -268,8 +260,8 @@ cls
 
 :Modify_MODs_PLGs
 
-:: 代码写的稀烂...
-:: 我想 DISABLED 掉
+ :: 代码写的稀烂...
+ :: 我想 DISABLED 掉
 
    cls
    if %_mod%==false (
@@ -400,7 +392,7 @@ cls
          echo 安装命令：cmcl mod --install --source=cf --id=349239
       )
       if %_erl%==5 (
-         start https://github.com/xieyuen/BatchTools/blob/main/MCDRinstaller/README.md
+         start https://github.com/xieyuen/Tool-Gallery/blob/main/MCDR-Installer/README.md
       )
       if %_erl%==8 (
          start https://www.fastmirror.net/#/download/Purpur?coreVersion=1.19.3
@@ -514,6 +506,7 @@ cls
 :AutoCheckingServer & :: 检测核心
 
    echo 自动检测核心中......
+   :: Fabric 核心
    if exist ".\fabric-server-launch.jar" (
       set _Chk_Server=true
       set "_Server=fabric-server-launch.jar"
@@ -521,6 +514,7 @@ cls
       echo 检测到核心:fabric-server-launch.jar
       goto Server_Action_Center
    )
+   :: Quilt 核心
    if exist ".\quilt-server-launch.jar" (
       set _Chk_Server=true
       set "_Server=quilt-server-launch.jar" 
@@ -528,6 +522,7 @@ cls
       echo 检测到核心:quilt-server-launch.jar 
       goto Server_Action_Center
    )
+   :: Bungeecord 核心
    if exist ".\BungeeCord.jar" (
       set _Chk_Server=true
      set "_Server=BungeeCord.jar"
@@ -537,6 +532,7 @@ cls
      echo 先砍内存占用（
      goto Server_Action_Center
    )
+   :: Vanilla 核心
    if exist ".\Server.jar" (
       set _Chk_Server=true
       set "_Server=Server.jar" 
@@ -600,6 +596,7 @@ cls
       :: 这一段代码是保存配置文件的代码
       :: >>config.bat 和 >config.bat 都是写入配置文件的
       :: ^^^^^^^^^^^^    ^^^^^^^^^^^
+      ::   这个是           这个是
       ::  在下面加行        覆盖写入
       ::
       :: 'echo.' 作为换行
@@ -631,7 +628,6 @@ cls
       if "%_config%==false" (
          echo 配置文件已生成完毕
          echo 请按照 README 中的配置文件详解填写配置文件！
-         start 
          pause >nul
          exit /b
       )
@@ -663,7 +659,7 @@ cls
    echo           The server is starting!
    echo =========================================
    powershell /C %_Java% -jar -Dfile.encoding=GBK -Xms%_RAMmin%M -Xmx%_RAMmax%M %_Server% nogui
-   // if %_eula%==false goto First_Start
+   if "%_eula%==false" goto First_Start
    set /a _restart+=1
    set /a _restart_dp+=1
    if %_chk_mod%==infinity goto Start_Server
@@ -671,6 +667,7 @@ cls
    if %_chk_mod%==5 goto restart_5
    if %_chk_mod%==10 goto restart_10
    if %_chk_mod%==0 goto Server_Crash
+   if "%_chk_mod%==Custom" goto restart_Custom
 
    :restart_1
 
@@ -723,5 +720,5 @@ cls
      goto Welcome
    )
    if %_erl%==3 goto Choose
-   if %_erl%==2 goto Check
+   if %_erl%==2 goto Initialize
    if %_erl%==1 exit /b
