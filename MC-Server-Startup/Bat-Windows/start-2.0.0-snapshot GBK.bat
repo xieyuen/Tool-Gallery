@@ -6,7 +6,7 @@
 :: 就像下面的，记得要空格
 
 set _version=2.0.0 & :: 版本号
-chcp 936 & :: 设置代码页 GBK
+chcp 936 & :: 设置 GBK 代码页
 set _restart=0 & :: 设置重启变量
 set _restart_dp=0 & :: 设置重启显示次数
 cls
@@ -14,25 +14,25 @@ if not exist config.bat (
    echo 第一次使用？
    echo 生成配置文件中...
    start "https://github.com/xieyuen/Tool-Gallery/blob/main/MC-Server-Startup/README.MD#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"
-   set "_config=false"
+   set _config=false
    goto Save_Config
-::    set "_ACS=AutoCheckingServer"
-::    :Initialize
-::       set _RAMmax=4096
-::       set _RAMmin=0
-::       set "_Java=.\Java18\bin\java.exe" & :: 设置 Java 路径
-::       set "_Frpc=DISABLED"
-::       set "_Frpc_Config=DISABLED"
-::       set _config=false
-::       :: 必须修改
-::       if exist eula.txt (
-::          set _eula=true 
-::       ) else ( 
-::          set _eula=false 
-::       )
-:: ) else (
-::    call config.bat
-::    set _config=true
+ ::   set "_ACS=AutoCheckingServer"
+ ::   :Initialize
+ ::      set _RAMmax=4096
+ ::      set _RAMmin=0
+ ::      set "_Java=.\Java18\bin\java.exe" & :: 设置 Java 路径
+ ::      set "_Frpc=DISABLED"
+ ::      set "_Frpc_Config=DISABLED"
+ ::      set _config=false
+ ::      :: 必须修改
+ ::      if exist eula.txt (
+ ::         set _eula=true 
+ ::      ) else ( 
+ ::         set _eula=false 
+ ::      )
+) else (
+   call config.bat
+   set _config=true
 )
 cls
 
@@ -67,7 +67,7 @@ cls
    echo.
    choice /C:0129C /N
    set _erl=%ERRORLEVEL%
-   if %_erl%==1 goto bye
+   if %_erl%==1 exit /b
    if %_erl%==2 (
       cls
       goto Server_Action_Center
@@ -112,7 +112,7 @@ cls
 
 :Server_Action_Center
 
-   if not %_config%==true (
+   if %_config%==false (
       if %_ACS%==AutoCheckingServer (
          set "%_ACS%=unAutoCheckingServer"
          goto AutoCheckingServer
@@ -151,28 +151,6 @@ cls
 
 ::============================================================================================================================
 
-:bye
-
-   cls
-   echo 真的要离开了吗?
-   echo 给你个机会撤销你的选择
-   echo [y]确定撤销
-   echo [n]白白
-   choice /C:YN /N
-   set _erl=%ERRORLEVEL%
-   cls
-   if %_erl%==1 (
-      echo 耶!
-      goto Welcome
-   )
-   if %_erl%==2 (
-      echo 白白
-      echo 你可以关闭这个窗口了
-      echo 或者随便按些什么
-      pause >nul
-      exit /b
-   )
-
 :Modify_Java
 
    echo 请输入Java路径:
@@ -194,17 +172,60 @@ cls
    echo 已经切换为默认java.
    goto Server_Action_Center
 
-:set_RAMmin
+:RAM
 
-   echo 请输入服务器最小内存占用(单位:MB,1GB=1024MB), 默认值:0
-   set /p "_RAMmin="
-   goto Check_RAM
+   :set_RAMmin
 
-:set_RAMmax
+      echo 请输入服务器最小内存占用(单位:MB,1GB=1024MB), 默认值:0
+      set /p "_RAMmin="
+      goto Check_RAM
 
-   echo 请输入服务器最大内存占用(单位:MB,1GB=1024MB), 默认值:4096
-   set /p "_RAMmax="
-   goto Check_RAM
+   :set_RAMmax
+
+      echo 请输入服务器最大内存占用(单位:MB,1GB=1024MB), 默认值:4096
+      set /p "_RAMmax="
+      goto Check_RAM
+   
+   :Check_RAM
+
+      if %_RAMmax%==0 (
+         echo emmm...最大为0M...
+         echo 服务器怎么跑?
+         echo 应该是最小为0M吧...
+         if %_RAMmin%==0 (
+            echo 最小也是0M?
+            echo 先给你重置了先
+            if %_Server%==Bungeecord.jar (
+               set _RAMmax=512
+            ) else (
+               set _RAMmax=4096
+            )
+            goto Server_Action_Center
+         )
+         echo 我给你换了哈
+         set "_RAMmax=%_RAMmin%"
+         set _RAMmin=0
+         goto Server_Action_Center
+      )
+      set /a "_temp=%_RAMmax%-%_RAMmin%"
+      if %_temp% GEQ 0 (
+         echo 设置成功! 
+         goto Server_Action_Center
+      )
+      echo [ERROR]:服务器内存最小值大于最大值 ( max:%_RAMmax% min:%_RAMmin% )
+      echo 请选择操作:
+      echo   [1]重置值
+      echo   [2]更改最大值
+      echo   [3]更改最小值
+      choice /C:123 /N
+      if %ERRORLEVEL%==1 (
+         set _RAMmax=4096
+         set _RAMmin=0
+         goto Server_Action_Center
+      )
+      if %ERRORLEVEL%==2 goto set_RAMmax
+      if %ERRORLEVEL%==3 goto set_RAMmin
+      if %ERRORLEVEL%==0 goto Server_Action_Center
 
 :Choose & :: 开服方式选择
 
@@ -465,43 +486,6 @@ cls
    echo 已选择默认核心:Start.jar
    set "_ACS=unAutoCheckingServer"
    goto Server_Action_Center
- 
-:Check_RAM
-
-   if %_RAMmax%==0 (
-     echo emmm...最大为0M...
-     echo 服务器怎么跑?
-     echo 应该是最小为0M吧...
-     if %_RAMmin%==0 (
-        echo 最小也是0M?
-        echo 先给你重置了先
-        set _RAMmax=4096
-        goto Server_Action_Center
-     )
-     echo 我给你换了哈
-     set "_RAMmax=%_RAMmin%"
-     set _RAMmin=0
-     goto Server_Action_Center
-   )
-   set /a "_temp=%_RAMmax%-%_RAMmin%"
-   if %_temp% GEQ 0 (
-      echo 设置成功! 
-      goto Server_Action_Center
-   )
-   echo [ERROR]:服务器内存最小值大于最大值 ( max:%_RAMmax% min:%_RAMmin% )
-   echo 请选择操作:
-   echo   [1]重置值
-   echo   [2]更改最大值
-   echo   [3]更改最小值
-   choice /C:123 /N
-   if %ERRORLEVEL%==1 (
-      set _RAMmax=4096
-      set _RAMmin=0
-      goto Server_Action_Center
-   )
-   if %ERRORLEVEL%==2 goto set_RAMmax
-   if %ERRORLEVEL%==3 goto set_RAMmin
-   if %ERRORLEVEL%==0 goto Server_Action_Center
 
 :AutoCheckingServer & :: 检测核心
 
@@ -624,6 +608,9 @@ cls
       echo @rem 不同意 false>>config.bat
       echo set "_eula=%_eula%">>config.bat
 
+      if "%_temp%"="eula.false" (
+         goto Start_Server
+      )
       echo 保存成功
       if "%_config%==false" (
          echo 配置文件已生成完毕
@@ -696,7 +683,11 @@ cls
       echo 同意协议方法: 打开eula.txt, 更改 eula=false 为 eula=true 并保存
       echo 同意协议后请按任意键继续...
       pause >nul
-      if exist ".\EULA.TXT" set eula=true
+      if exist ".\EULA.TXT" (
+         set _eula=true
+         set "_temp=eula.false"
+         goto Save_Config
+      )
       goto Start_Server
 
 :Server_Crash & :: 崩溃
