@@ -10,5 +10,5 @@
 
 哦对了，看看这个
 
-![](https://github.com/xieyuen/Tool-Gallery/ReadmeFiles/TrueMCDRFiles.jpg)
+![](https://raw.githubusercontent.com/xieyuen/Tool-Gallery/main/TrueMCDRFiles.jpg)
 >流传在 [MCDReforged 讨论群](<https://jq.qq.com/?_wv=1027&k=bCyMlrWD> "100% Vanilla!") 的图片
