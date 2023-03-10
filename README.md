@@ -23,6 +23,6 @@ MC服务器开服脚本，使用条件请见 [README.md](/MC-Server-Startup/READ
 
 ---
 
-## [MCDR Installer](/MCDRinstaller/README.md)
+## [MCDR Installer](/MCDR-Installer/README.md)
 
 一个简易的 [MCDR](https://github.com/Fallen-Breath/MCDReforged "佛冷的 MCDReforged") 安装器
