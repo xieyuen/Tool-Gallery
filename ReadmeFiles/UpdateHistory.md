@@ -26,39 +26,51 @@
 >- [~~2.0~~](/MC-Server-Startup/README.MD#版本-200)
 
 >### 版本 [*1.3.7*](/MC-Server-Startup/Bat-Windows/start-1.3.7-snapshot%20GBK.bat)<br>
->1. 添加模组/插件内添加mods/plugins文件夹的功能
+>```diff
+>+ 1. 添加模组/插件内添加 mods/plugins 文件夹的功能
 >2. 优化了手动选择核心出错的界面
 >3. 优化了部分代码
+>```
 
 >### 版本 [*1.3.6*](/MC-Server-Startup/Bat-Windows/start-1.3.6-snapshot%20GBK.bat)<br>
->1. 添加Settings界面退出选项
->2. 优化Java路径选择
+>```diff
+>+ 1. 添加 Settings 界面退出选项
+>2. 优化 Java 路径选择
+>```
 
 >### 版本 [*1.3.5*](/MC-Server-Startup/Bat-Windows/start-1.3.5-snapshot%20GBK.bat)<br>
->1. [添加对.disabled禁用方式读取支持](<> "但是脚本内禁用的方式还是.ban")
->2. 添加自定义Java路径支持
->3. 完善vanilla核心检测
+>```diff
+>+ 1. 添加对 .disabled 禁用方式读取支持(但是脚本内禁用的方式还是 .ban )
+>+ 2. 添加自定义 Java 路径支持
+>3. 完善 vanilla 核心检测
 >4. 对崩溃界面作了小调整
->5. [取消自动检测对Forge的支持](<> "这个支持问题很大啊，暂时只能删了")
+>- 5. 取消自动检测对 Forge 的支持(这个支持问题很大啊，暂时只能删了)
+>```
 
 >### 版本 [*1.3.4*](/MC-Server-Startup/Bat-Windows/start-1.3.4-snapshot%20GBK.bat)<br>
->1. 修改vanilla核心检测
->2. 功能“禁用/解禁模组和插件”<br>增加 是否可加载模组判断
+>```diff
+>1. 修改 vanilla 核心检测
+>+ 2. 功能“禁用/解禁模组和插件”增加 是否可加载模组判断
 >3. 优化了部分代码
+>```
 
 >### 版本 [*1.3.3*](/MC-Server-Startup/Bat-Windows/start-1.3.3-snapshot%20GBK.bat)<br>
->- 添加功能:
->      - 禁用/解禁模组和插件
+>```diff
+>+添加功能: 禁用/解禁模组和插件
+>```
 
 >### 版本 [*1.3.2*](/MC-Server-Startup/Bat-Windows/start-1.3.2-snapshot%20GBK.bat)<br>
 >**又是一个重大更新**
->1. 添加操作中心
->2. 添加功能: 
->       1. 更改内存初始占用大小
->       2. 更改内存最大占用大小
->       3. 自动检测服务器核心<br> [查看支持自动检测的核心](<#支持检测的核心> "Fabric, Quilt, Forge, Vanilla")
->       4. 手动更改服务器核心
->       5. [EULA未同意提示](<> "有待优化")
+>```diff
+>+ 1. 添加操作中心
+>+ 2. 添加功能: 
+>+        i. 更改内存初始占用大小
+>+        ii. 更改内存最大占用大小
+>+        iii. 自动检测服务器核心
+>+        iv. 手动更改服务器核心
+>+        v. [EULA未同意提示](<> "有待优化")
+>```
+>[查看支持自动检测的核心](<#支持检测的核心> "Fabric, Quilt, Forge, Vanilla")
 
 >### ~~版本 [*1.3.1*](/MC-Server-Startup/Bat-Windows/start-1.3.1-snapshot%20GBK.bat)~~
 >~~尝试添加文字颜色失败~~
