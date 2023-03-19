@@ -13,7 +13,7 @@ cls
 if not exist config.bat (
    echo 第一次使用？
    echo 生成配置文件中...
-   start "https://github.com/xieyuen/Tool-Gallery/blob/main/MC-Server-Startup/README.MD#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"
+   start "https://github.com/xieyuen/Tool-Gallery/blob/main/MC-Server-Startup/README.MD"
    set _config=false
    goto Save_Config
  ::   set "_ACS=AutoCheckingServer"
