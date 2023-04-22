@@ -68,7 +68,7 @@
 >+        ii. 更改内存最大占用大小
 >+        iii. 自动检测服务器核心
 >+        iv. 手动更改服务器核心
->+        v. [EULA未同意提示](<> "有待优化")
+>+        v. EULA未同意提示(有待优化)
 >```
 >[查看支持自动检测的核心](</MC-Server-Startup/README.md#支持检测的核心> "Fabric, Quilt, Forge, Vanilla")
 
@@ -197,6 +197,7 @@ goto restart
 ~~~
 
 [我都没脸放出来了（](/MC-Server-Startup/Bat-Windows/start-0.0.bat "java -jar ______.jar")
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ---
