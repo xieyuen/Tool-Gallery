@@ -608,7 +608,7 @@ cls
       echo @rem 不同意 false>>config.bat
       echo set "_eula=%_eula%">>config.bat
 
-      if "%_temp%"="eula.false" (
+      if "%_temp%"="eula-false" (
          goto Start_Server
       )
       echo 保存成功
@@ -685,7 +685,7 @@ cls
       pause >nul
       if exist ".\EULA.TXT" (
          set _eula=true
-         set "_temp=eula.false"
+         set "_temp=eula-false"
          goto Save_Config
       )
       goto Start_Server
