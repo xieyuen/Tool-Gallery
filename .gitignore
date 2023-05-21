@@ -3,3 +3,4 @@ MC-Server-Startup/Bat-Windows/config.bat
 MC-Server-Startup/Bat-Windows/2.1.0/config.bat
 */config.bat
 MC-Server-Startup/Bat-Windows/2.1.0/.startup/config.bat
+*.jar
