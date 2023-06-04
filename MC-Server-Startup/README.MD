@@ -99,16 +99,14 @@ A: emm...我忘改了つ﹏⊂<br>更新内容以[README.MD](</开服脚本/READ
         - [1.3.5](/ReadmeFiles/UpdateHistory.md#版本-135)
         - [1.3.6](/ReadmeFiles/UpdateHistory.md#版本-136)
         - [1.3.7](/ReadmeFiles/UpdateHistory.md#版本-137)
-- [~~2.0~~](#更新预告)
+- [2.0](#版本-200)
 
 ---
 
->### ~~更新预告 !~~
->#### ~~版本 [*2.0.0*](/MC-Server-Startup/Bat-Windows/start-2.0.0-snapshot%20GBK.bat)~~
->1. ~~添加自动检测对Forge等核心的支持~~
->2. ~~代码大改写!~~
->3. ~~添加操作中心"清屏"选项~~
->4. ~~添加[配置文件相关内容](<#更新预告> "就不告诉你")~~
+>### 版本 [*2.0.0*](/MC-Server-Startup/Bat-Windows/start-2.0.0-snapshot%20GBK.bat)
+>1. 代码大改写!
+>2. 添加操作中心"清屏"选项
+>3. 添加[配置文件相关内容](<#更新预告> "就不告诉你")
 
 >### 版本 [*1.3.7*](/MC-Server-Startup/Bat-Windows/start-1.3.7-snapshot%20GBK.bat)<br>
 >1. 添加模组/插件内添加mods/plugins文件夹的功能
