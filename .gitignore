@@ -1,5 +1,4 @@
 # Git ignore File
-MC-Server-Startup/config.bat
 MC-Server-Startup/2.1.0/config.bat
 */config.bat
 MC-Server-Startup/2.1.0/.startup/config.bat
