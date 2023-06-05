@@ -4,15 +4,6 @@ title MCDReforged Installer
 set "_pypi=https://pypi.tuna.tsinghua.edu.cn/simple"
 cls
 
-echo Please select a language:
-echo 请选择语言:
-echo   [1] zh_cn 简体中文
-echo   [2] en_us English
-choice /C:12 /N
-set _erl=%ERRORLEVEL%
-if %_erl%==1 goto :zh_cn
-if %_erl%==2 goto :en_us
-
 :zh_cn
 
     cls
@@ -101,53 +92,23 @@ if %_erl%==2 goto :en_us
         echo [2]阿里云 pypi 镜像站
         echo [3]USTC pypi 镜像站
         echo [4]BFSU pypi 镜像站
+        echo [5]豆瓣 pypi 镜像站
+        echo [6]华中科技大学 pypi 镜像站
+        echo [7]上海交通大学 pypi 镜像站
         echo.
-        choice /N /C:1234
+        choice /N /C:1234567
         set _erl=%ERRORLEVEL%
         if %_erl%==1 set "_pypi=https://pypi.tuna.tsinghua.edu.cn/simple"
         if %_erl%==2 set "_pypi=https://mirrors.aliyun.com/pypi/simple/"
         if %_erl%==3 set "_pypi=https://mirrors.ustc.edu.cn/pypi/"
         if %_erl%==4 set "_pypi=https://mirrors.bfsu.edu.cn/pypi/web/simple"
+        if %_erl%==5 set "_pypi=http://pypi.douban.com/simple/"
+        if %_erl%==6 set "_pypi=http://pypi.hustunique.com/simple/"
+        if %_erl%==7 set "_pypi=https://mirror.sjtu.edu.cn/pypi/web/simple/"
+        :: if %_erl%== set "_pypi="
 
-:en_us
-    
-    cls
-    echo Python 3.6 or later is required before installing MCDR!!!
-    echo Python 3.6 or later is required before installing MCDR!!!
-    echo Python 3.6 or later is required before installing MCDR!!!
-    echo.
-    echo Please place the script in the folder where you want to install MCDR.
-    echo.
-    echo Please select an action:
-    echo   [1] Install MCDReforged
-    echo   [2] Update MCDReforged
-    choice /C:12 /N
-    set _erl=%ERRORLEVEL%
-    if %_erl%==1 goto :us_install
-    if %_erl%==2 goto :us_update
-
-    :us_install
-    
-        echo Please press any key to install MCDR...
-        pause >nul
-        pip install mcdreforged
-        py -m mcdreforged init
-        echo Installation complete!
-        echo Use the command py -m mcdreforged to turn on MCDR! (Remember to use administrator privileges)
-        echo Press any key to exit...
-        pause >nul
-        exit /b
-    
-    :us_update
-    
-        echo Please press any key to update MCDR...
-        pause >nul
-        pip install mcdreforged -U
-        echo Update complete!
-        echo Use the command "py -m mcdreforged" to turn on MCDR! (Remember to use administrator privileges)
-        echo Press any key to exit...
-        pause >nul
-        exit /b
+        echo 设置完成！
+        goto :zh_cn
 
 :Tools
 
