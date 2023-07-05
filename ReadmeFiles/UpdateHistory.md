@@ -4,7 +4,7 @@
 | :-: | :-----------: | :----------: |
 | 最新版本 | 1.3.7 | 1.1 |
 | 快照版 | 2.0.0 | None |
-| README🔗链接 | [README](/MCDR-Installer/README.md) | [README](/MC-Server-Startup/README.MD) |
+| README🔗链接 | [README](../MCDR-Installer/README.md) | [README](../MC-Server-Startup/README.MD) |
 
 ## [开服脚本](/MC-Server-Startup/README.MD#更新日志)
 
@@ -70,7 +70,7 @@
 >+        iv. 手动更改服务器核心
 >+        v. EULA未同意提示(有待优化)
 >```
->[查看支持自动检测的核心](</MC-Server-Startup/README.md#支持检测的核心> "Fabric, Quilt, Forge, Vanilla")
+>[查看支持自动检测的核心](<../MC-Server-Startup/README.md#支持检测的核心> "Fabric, Quilt, Forge, Vanilla")
 
 >### ~~版本 [*1.3.1*](/MC-Server-Startup/Bat-Windows/start-1.3.1-snapshot%20GBK.bat)~~
 >~~尝试添加文字颜色失败~~
